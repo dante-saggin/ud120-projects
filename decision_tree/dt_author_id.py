@@ -30,7 +30,7 @@ from sklearn.metrics import accuracy_score
 #labels_train = labels_train[:len(labels_train)/100] 
 t0 = time()
 print "training start"
-clf = tree.DecisionTreeClassifier()
+clf = tree.DecisionTreeClassifier(min_samples_split=40)
 clf.fit(features_train, labels_train)
 print "training time:", round(time()-t0, 3), "s"
 
@@ -38,7 +38,7 @@ t1 = time()
 labels_predicted = clf.predict(features_test)            
 print "predict time:", round(time()-t1, 3), "s"
 acc = accuracy_score(labels_predicted, labels_test)
-print "Accuracy" + str(acc)
+print "Accuracy " + str(acc)
 print "cris " + str(sum(labels_predicted))
 print "sara " + str(len(labels_predicted) - sum(labels_predicted))
 
